@@ -1,2 +1,0 @@
-# Visuals
-Place for visuals
