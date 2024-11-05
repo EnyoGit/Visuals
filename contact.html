@@ -1,1 +1,125 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"><style>body{display:flex;justify-content:center;align-items:center;height:100vh;margin:0}.rounded-button{position:relative;background: linear-gradient(to bottom, #ee7c5d, #fcc575);border:none;border-radius: 30px 5px 30px 5px;color:#fff;font-family:'Roboto',sans-serif;font-size:36px;padding:15px 30px;cursor:pointer;text-decoration:none;display:inline-block;transition:background-color 0.3s ease,transform 0.3s ease,color 0.3s ease;overflow:hidden;box-shadow:0 4px 6px rgba(0,0,0,0.3);transform-origin:center}.rounded-button::before{content:"";position:absolute;top:-100%;left:-100%;width:100%;height:100%;background:linear-gradient(45deg,rgba(255,255,255,0) 0%,rgba(255,255,255,0.2) 50%,rgba(255,255,255,0) 100%);animation:shimmer 1.5s linear infinite;transform:rotate(-45deg);animation-delay:1s;filter:blur(10px) brightness(1.8)}.rounded-button.active{background-color:#E7FF00;color:#444;transform:scale(1.1)}.rounded-button:hover{background-color:#E7FF00;color:#444;transform:scale(1.1)}.media(max-width:768px){.rounded-button{font-size:24px;padding:15px 30px}}@keyframes shimmer{0%{top:-100%;left:-100%}100%{top:100%;left:100%}}@keyframes moveText{0%{transform:translateY(-100%);opacity:0}10%{transform:translateY(0);opacity:1}90%{transform:translateY(0);opacity:1}100%{transform:translateY(100%);opacity:0}}.rounded-button span{animation:moveText 4s ease-out infinite;display:inline-block;animation-play-state:running}</style></head><body><a class="rounded-button" href="mailto:fajrinaf@gmail.com"><span>CONTACT US</span></a><script>const button=document.querySelector(".rounded-button");button.addEventListener("contextmenu",function(event){event.preventDefault()});button.addEventListener("mouseenter",function(){button.classList.add("active")});button.addEventListener("mouseleave",function(){button.classList.remove("active")});</script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo Black&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Styling */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 100%;
+            text-align: center;
+        }
+
+        .rounded-button {
+            position: relative;
+            background: linear-gradient(to top, #78d7f7, #966de4);
+            border: none;
+            border-radius: 30px 5px 30px 5px;
+            color: #fff;
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 13vw;
+            padding: 3vw 5vw;
+            cursor: pointer;
+            text-decoration: none;
+text-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
+
+            display: inline-block;
+            transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            transform-origin: center;
+        }
+
+        .rounded-button::before {
+            content: "";
+            position: absolute;
+            top: -100%;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0) 100%);
+            animation: shimmer 1.5s linear infinite;
+            transform: rotate(-45deg);
+            animation-delay: 1s;
+            filter: blur(10px) brightness(1.8);
+        }
+
+        .rounded-button.active {
+            background-color: #E7FF00;
+            color: #444;
+            transform: scale(1.1);
+        }
+
+        .rounded-button:hover {
+            background: #DFFF00; /* Perubahan warna background saat dihover */
+            color: #444;
+            transform: scale(1.1);
+        }
+
+        @keyframes shimmer {
+            0% {
+                top: -100%;
+                left: -100%;
+            }
+            100% {
+                top: 100%;
+                left: 100%;
+            }
+        }
+
+        @keyframes moveText {
+            0% {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            10% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            90% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+        }
+
+        .rounded-button span {
+            animation: moveText 4s ease-out infinite;
+            display: inline-block;
+            animation-play-state: running;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <a class="rounded-button" href="mailto:fajrinaf@gmail.com"><span>Email</span></a>
+    </div>
+    <script>
+        const button = document.querySelector(".rounded-button");
+        button.addEventListener("contextmenu", function (event) {
+            event.preventDefault();
+        });
+        button.addEventListener("mouseenter", function () {
+            button.classList.add("active");
+        });
+        button.addEventListener("mouseleave", function () {
+            button.classList.remove("active");
+        });
+    </script>
+</body>
+
+</html>
