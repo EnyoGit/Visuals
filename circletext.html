@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      overflow: hidden;
+      margin: 0;
+    }
+    #circle {
+      stroke: #434343;
+      fill: transparent;
+      /*backdrop-filter: blur(10px);*/
+      display: none;
+    }
+    /* Ubah fill Small Circle menjadi gradasi SVG */
+    #smallCircle {
+      stroke: white;
+filter: blur (20px);
+      fill: url(#grad);
+    }
+    #largeCircle {
+      stroke: #abc211;
+      fill: transparent;
+    }
+    #svg-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100vw;
+      height: 100vh;
+
+    }
+    .text {
+      font-family: 'Barlow', sans-serif;
+      font-size: 3.5vw;
+      fill: #abc211;
+text-shadow: 1px 1px 1.1px rgba(0, 0, 0, 0.0);
+
+    }
+    @media screen and (max-width: 500px) {
+      .text {
+        font-size: 3.5vw;
+      }
+    }
+    /* Tambahkan gaya untuk lingkaran glassmorphism */
+    #glassCircle {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      width: 72%; /* Ukuran yang sama dengan lingkaran terbesar */
+      padding-bottom: 72%; /* Mempertahankan aspek rasio 1:1 */
+      box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.1);
+       /*backdrop-filter: blur(10px);*/
+      z-index: -1;
+      top: 14%; /* Penyesuaian posisi agar sejajar dengan lingkaran lainnya */
+      left: 14%; /* Penyesuaian posisi agar sejajar dengan lingkaran lainnya */
+    }
+  </style>
+</head>
+<body>
+  <!-- Lingkaran Glassmorphism -->
+  <div id="glassCircle"></div>
+
+  <div id="svg-container">
+    <svg id="svg" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      <!-- Large Circle (Lingkaran Pertama) -->
+      <circle id="circle" cx="50%" cy="50%" r="30%" />
+      <!-- Small Circle (Lingkaran Kedua) -->
+      <circle id="smallCircle" cx="50%" cy="50%" r="25%" />
+      <!-- Large Circle (Lingkaran Ketiga) -->
+      <circle id="largeCircle" cx="50%" cy="50%" r="36%" />
+      <!-- Tambahkan teks F3 di tengah lingkaran kedua -->
+      <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" font-size="22vw" fill="white" font-family="'Barlow', sans-serif" filter="url(#drop-shadow)">F3.</text>
+<defs>
+  <filter id="drop-shadow">
+    <feDropShadow dx="4" dy="4" stdDeviation="2" flood-color="#000" flood-opacity="0.2" />
+  </filter>
+</defs>
+      <g id="text-container"></g> <!-- Container for text -->
+      <!-- Definisi gradasi SVG -->
+      <defs>
+        <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#DFFF00" />
+          <stop offset="100%" style="stop-color:#abc211" />
+        </linearGradient>
+      </defs>
+    </svg>
+  </div>
+  <script>
+    const text = "· Animation · FAJRIN AFFANDI · Design · GENERALIST® ";
+    const circle = document.getElementById("circle");
+    const smallCircle = document.getElementById("smallCircle");
+    const largeCircle = document.getElementById("largeCircle");
+    const radius = 30; // radius dalam persentase lebar layar
+    const smallRadius = 27; // radius dalam persentase lebar layar
+    const largeRadius = 36; // radius dalam persentase lebar layar
+    const centerX = 50; // posisi horizontal dalam persentase lebar layar
+    const centerY = 50; // posisi vertikal dalam persentase tinggi layar
+    const circumference = 2 * Math.PI * radius;
+    const smallCircumference = 2 * Math.PI * smallRadius;
+    const largeCircumference = 2 * Math.PI * largeRadius;
+    const letterSpacing = circumference / text.length;
+    let rotationAngle = -90;
+    const rotationSpeed = -0.35;
+
+    function updateCircleRotation() {
+      circle.setAttribute("transform", `rotate(${rotationAngle}, ${centerX}%, ${centerY}%)`);
+      smallCircle.setAttribute("transform", `rotate(${rotationAngle}, ${centerX}%, ${centerY}%)`);
+      largeCircle.setAttribute("transform", `rotate(${rotationAngle}, ${centerX}%, ${centerY}%)`);
+      rotationAngle += rotationSpeed;
+      const textContainer = document.getElementById("text-container");
+      textContainer.innerHTML = ""; // Clear existing text
+      for (let i = 0; i < text.length; i++) {
+        const angle = (i * letterSpacing / radius) + (Math.PI / 2) - (rotationAngle * Math.PI / 180);
+        const x = centerX + radius * Math.cos(angle);
+        const y = centerY + radius * Math.sin(angle);
+        const textElement = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        textElement.textContent = text[i];
+        textElement.setAttribute("x", x + "%");
+        textElement.setAttribute("y", y + "%");
+        textElement.setAttribute("text-anchor", "middle");
+        textElement.setAttribute("dominant-baseline", "middle");
+        textElement.classList.add("text");
+        textContainer.appendChild(textElement);
+      }
+      requestAnimationFrame(updateCircleRotation);
+    }
+    updateCircleRotation();
+  </script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Barlow">
+</body>
+</html>
