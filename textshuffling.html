@@ -1,1 +1,90 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Ascendia</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap"><style>body{margin:3;margin-top:-5;padding:0;overflow:hidden;display:flex;justify-content:left;align-items:center;min-height:100vh;background:url('background-image.jpg') no-repeat center center fixed;background-size:cover;font-family:'Roboto',sans-serif;}.ascendia-container{background:rgba(255,255,255,0.2);border:1px solid white;box-shadow:0px 6px 8px rgba(0,0,0,0.2);backdrop-filter:blur(10px);border-radius:30px 30px 30px 5px;padding:10px;}.ascendia-text{font-family:'Roboto',sans-serif;font-size:33px;color:#666666;filter:grayscale(100%) hue-rotate(120deg);text-align:center;}@media (min-width:500px){.ascendia-text{font-size:40px;}}</style></head><body><div class="ascendia-container"><div class="ascendia-text"><span id="typed-text"></span></div></div><script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script><script>const emojiCursors=['📈','🎓','💻','⚕️','💰','✈️','🏡','🏭','🎬','🌾','⚽','🤝','🕶️','🍔','🌳','🚗','🎨'];const options={strings:["Marketing","Education","Technology","Health Care","Finance","Tourism","Real Estate","Manufacture","Entertainment","Agriculture","Sport","Non-Profit","Fashion","FnB","Environment","Automotive","Art+Design"],typeSpeed:35,backSpeed:25,backDelay:1500,startDelay:100,loop:true,showCursor:true,cursorChar:' ',onStringTyped:function(pos,self){const emojiCursor=emojiCursors[pos];self.cursor.innerHTML=emojiCursor;},preStringTyped:function(pos,self){const emojiCursor=emojiCursors[pos];self.cursor.innerHTML=emojiCursor;}};const typed=new Typed("#typed-text",options);</script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Animation Production Journey</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap">
+    <style>
+        body {
+            margin: 3;
+            margin-top: -5;
+            padding: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: left;
+            align-items: center;
+            min-height: 100vh;
+            background: url('background-image.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Roboto', sans-serif;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid white;
+            box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 30px 30px 30px 5px;
+            padding: 10px;
+        }
+        .text {
+            font-family: 'Roboto', sans-serif;
+            font-size: 33px;
+            color: #666666;
+            filter: grayscale(100%) hue-rotate(120deg);
+            text-align: left;
+        }
+        @media (min-width: 500px) {
+            .text {
+                font-size: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="text">
+            <span id="typed-text"></span>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script>
+        const options = {
+            strings: [
+                "Ideation", 
+                "Storyboard ", 
+                "Sketching", 
+                "Design", 
+                "Layout ", 
+                "3D Modeling ", 
+                "Rigging", 
+                "Animation", 
+                "Rendering ", 
+                "Editing ", 
+                "Visual FX", 
+                "Post-Pro", 
+                "Final Review ", 
+                "Delivery"
+            ],
+            typeSpeed: 35,
+            backSpeed: 25,
+            backDelay: 1500,
+            startDelay: 100,
+            loop: true,
+            showCursor: true,
+            cursorChar: ' ',
+            onStringTyped: function (pos, self) {
+                const emojiCursor = [' 💡', ' 🖊️', ' ✍', ' 🎨', ' 🧱', ' 🗿', ' 🦾', ' 🔸', ' 🖼️', ' ✂️', ' ⚡', ' ✨', ' ✔', ' 📦'][pos];
+                self.cursor.innerHTML = emojiCursor;
+            },
+            preStringTyped: function (pos, self) {
+                const emojiCursor = ['💡', '🖊️', '✍', '🎨', '🧱', '🗿', '🦾', '🔸', '🖼️', '✂️', '⚡', '✨', '✔', '📦'][pos];
+                self.cursor.innerHTML = emojiCursor;
+            }
+        };
+        
+        const typed = new Typed("#typed-text", options);
+    </script>
+</body>
+</html>
