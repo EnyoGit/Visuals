@@ -16,12 +16,12 @@
     }
     /* Ubah fill Small Circle menjadi gradasi SVG */
     #smallCircle {
-      stroke: #DFFF00;
+      stroke: gray;
 filter: blur (20px);
       fill: url(#grad);
     }
     #largeCircle {
-      stroke: #DFFF00;
+      stroke: gray;
       fill: transparent;
     }
     #svg-container {
@@ -35,7 +35,7 @@ filter: blur (20px);
     .text {
       font-family: 'Barlow', sans-serif;
       font-size: 3.5vw;
-      fill: #abc211;
+      fill: gray;
 text-shadow: 1px 1px 1.1px rgba(0, 0, 0, 0.0);
 
     }
@@ -72,7 +72,7 @@ text-shadow: 1px 1px 1.1px rgba(0, 0, 0, 0.0);
       <!-- Large Circle (Lingkaran Ketiga) -->
       <circle id="largeCircle" cx="50%" cy="50%" r="36%" />
       <!-- Tambahkan teks F3 di tengah lingkaran kedua -->
-      <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" font-size="22vw" fill="white" font-family="'Barlow', sans-serif" filter="url(#drop-shadow)">F3.</text>
+      <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" font-size="22vw" fill="white" font-family="'Barlow', sans-serif" filter="url(#drop-shadow)">FFF.</text>
 <defs>
   <filter id="drop-shadow">
     <feDropShadow dx="4" dy="4" stdDeviation="2" flood-color="#000" flood-opacity="0.2" />
@@ -82,14 +82,14 @@ text-shadow: 1px 1px 1.1px rgba(0, 0, 0, 0.0);
       <!-- Definisi gradasi SVG -->
       <defs>
         <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" style="stop-color:#DFFF00" />
-          <stop offset="100%" style="stop-color:#c7e506" />
+          <stop offset="0%" style="stop-color:#f3f3f3" />
+          <stop offset="100%" style="stop-color: gray" />
         </linearGradient>
       </defs>
     </svg>
   </div>
   <script>
-    const text = "· Animation · FAJRIN AFFANDI · Design · GENERALIST® ";
+    const text = "· ANIMATION · FAJRIN AFFANDI · DESIGN · GENERALIST® ";
     const circle = document.getElementById("circle");
     const smallCircle = document.getElementById("smallCircle");
     const largeCircle = document.getElementById("largeCircle");
