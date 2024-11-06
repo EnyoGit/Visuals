@@ -61,11 +61,11 @@
                 "Rigging", 
                 "Animation", 
                 "Rendering ", 
-                "Editing ", 
                 "Visual FX", 
                 "Post-Pro", 
-                "Final Review ", 
-                "Delivery"
+                "Editing ",
+                "Delivery ", 
+                "Coffee",
             ],
             typeSpeed: 35,
             backSpeed: 25,
@@ -75,11 +75,11 @@
             showCursor: true,
             cursorChar: ' ',
             onStringTyped: function (pos, self) {
-                const emojiCursor = [' 💡', ' 🖊️', ' ✍', ' 🎨', ' 🧱', ' 🗿', ' 🦾', ' 🔸', ' 🖼️', ' ✂️', ' ⚡', ' ✨', ' ✔', ' 📦'][pos];
+                const emojiCursor = [' 💡', ' 🖊️', ' ✍', ' 🎨', ' 🧱', ' 🗿', ' 🦾', ' 🔸', ' 🖼️', ' ⚡', ' ✨', ' ✂️', ' 📦', ' ☕'][pos];
                 self.cursor.innerHTML = emojiCursor;
             },
             preStringTyped: function (pos, self) {
-                const emojiCursor = ['💡', '🖊️', '✍', '🎨', '🧱', '🗿', '🦾', '🔸', '🖼️', '✂️', '⚡', '✨', '✔', '📦'][pos];
+                const emojiCursor = [' 💡', ' 🖊️', ' ✍', ' 🎨', ' 🧱', ' 🗿', ' 🦾', ' 🔸', ' 🖼️', ' ⚡', ' ✨', ' ✂️', ' 📦', ' ☕'][pos];
                 self.cursor.innerHTML = emojiCursor;
             }
         };
