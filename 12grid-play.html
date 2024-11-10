@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Grid Layout</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space Grotesk:wght@400;700&family=Barlow:wght@400;700&family=Rampart One:wght@400;700&family=Silkscreen:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+   <style>
+        body {
+            font-family: Silkscreen, sans-serif ;
+            margin: 0.5vh;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 99vh;
+            background-color: transparent;
+            */background: url('https://s11.gifyu.com/images/S1LYt.gif') no-repeat center center fixed;
+            background-size: cover;
+            overflow: hidden;
+
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(4, 1fr);
+            gap: 0.5vw;
+            width: 83vw;
+            margin-top: -10vh;
+            height: 90vh;
+            box-sizing: border-box;
+            padding: 0.5vw;
+            overflow: hidden;
+        }
+
+        .grid-item {
+            position: relative;
+            background-color: #edece8;
+            border-radius: 1vh;
+            border: 0.15vh solid #434343;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0vh;
+            text-align: justify;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease, z-index 0.3s ease;
+
+
+        }
+
+        .small-text {
+            font-family: Barlow, sans-serif;  
+            padding: 0.5vh;        
+            font-size: 1vw;            
+            z-index: 2;
+            transition: transform 0.3s ease;
+            
+}
+/* Menandai proyek yang sudah dilihat */
+.grid-item.viewed {
+    background-color: #d9d7d0; /* Ubah warna background menjadi lebih gelap */
+}
+
+/* Hentikan hover sementara pada cell yang sudah dilihat */
+.grid-item.no-hover:hover {
+    transform: none;
+    z-index: 1; /* Hilangkan transformasi dan z-index saat dihover */
+
+}
+
+.grid-item:nth-child(3):hover {
+    grid-column: 3 / span 1; /* GUNDAM HOVER */
+    grid-row: 1; 
+    width: calc(200% + 0.5vw); 
+    z-index: 4; 
+    transform: translateX(-50%);
+
+     }
+
+
+
+
+@keyframes shiftLeftThenRight {
+    0% {
+        transform: translateX(0); /* Posisi awal */
+    }
+    30% {
+        transform: translateX(-5%); /* Geser sedikit ke kiri */
+    }
+    100% {
+        transform: translateX(0%); /* Kembali */
+    }
+}
+
+.grid-item:nth-child(7):hover {
+    grid-column: 1 / span 1; /* TATSUMI */
+    grid-row: 3; 
+    width: calc(200% + 0.5vw); 
+    z-index: 4; 
+    animation: shiftLeftThenRight 0.4s ease forwards; /* Animasi pergeseran */
+
+}
+
+.grid-item:nth-child(6) {
+    grid-column: 3 / span 1; /* GARUDA */
+    grid-row: 2;
+    width: calc(200% + 0.7vw); 
+    z-index: 4; 
+    transform: translateX(-50%);
+
+
+
+
+}
+
+.grid-item:nth-child(10) {
+    grid-column: 1 / span 1; /* SONNOX */
+    grid-row: 4; 
+    width: calc(200% + 0.5vw); 
+    z-index: 4; 
+    transform: translateX(-0.5%);
+
+
+}
+
+        mark { 
+              background-color: transparent;
+              color: #434343;
+        }
+
+        .large-number {
+            font-size: 15vw;
+            color: #434343;
+            font-weight: regular;
+            letter-spacing: -2vw;
+            line-height: 0.9;
+            margin-right: 1.2vh;
+            margin-bottom: -0.8vh;
+            z-index: 2;
+            transition: transform 0.2s ease;
+            position: relative;
+           
+
+        }
+          foot {
+            font-size: 1.3vw;
+            font-weight: semibold;
+            text-align: center;
+            background-color: #edece8;
+            z-index: 4;
+            text-indent: 50px;
+            padding-top: 1vh;
+            white-space: wrap;
+            margin-right: 6vh;
+            margin-left: -0.6vh;
+            position: absolute;
+            text-align: justify;
+
+}
+
+
+           p {
+            margin-left: 25vh;
+            margin-right: 5vh;
+            padding: 5px;
+            width: fit-content;
+            position: relative;
+  
+       }
+           h1 {
+            font-size: 17vw;
+            font-weight: medium;
+            letter-spacing: -2vw;
+            line-height: 1;
+            margin-top: 2vh;
+            z-index: 2;
+            transition: transform 0.3s ease;
+            position: relative;
+               -webkit-text-fill-color: #434343;
+               -webkit-text-stroke-width: 0.3vh;
+               -webkit-text-stroke-color: #FFFFF0;
+               
+
+        }
+
+	.grid-item:hover .large-number, 
+	.grid-item:hover .small-text {
+ 	   transition: all 0.2s ease;
+	}
+
+	.grid-item:hover .large-number {
+   	  font-family: Barlow, sans-serif; 
+    	  font-weight: bold; 
+    	  letter-spacing: -0.8vw; 
+                  text-align: center;
+    	  transform: scale(0.4); 
+    	  color: #FFFFF0; 
+    	  text-shadow: 0.3vh 0.3vh 0.8vh black; 
+
+	}
+
+       	 .grid-item:hover .small-text {
+          	    color: #FFFFF0; 
+
+        }
+
+        .grid-item.random-2 {
+            justify-content: center;
+            align-items: flex-end;
+
+        }
+
+        .grid-item.random-3 {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
+
+        }
+
+        .grid-item.random-4 {            
+            flex-direction: row-reverse;
+            justify-content: space-evenly;
+            align-items: flex-start;
+
+        }
+
+        .grid-item.random-5 {            
+            flex-direction: row;
+            justify-content: space-evenly;
+            align-items: flex-end;
+
+        }
+
+        /* CSS untuk gambar */
+        .grid-item img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 105%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            z-index: 1;
+
+        }
+
+        .grid-item:hover img {
+            opacity: 1;
+            transform: scale(1.2);
+        }
+
+        .sub-page {
+            display: none;
+            position: fixed;
+            margin: 0.5vh;
+            width: 99vw;
+            height: 100vh;
+            background-color: #edece8;
+            border-radius: 2vh;
+            border: 0.15vh solid #434343;
+            z-index: 10;
+            color: #fff;
+            padding: 6vh;
+            padding-top: 4vh;
+            box-sizing: border-box;        
+            overflow: hidden;
+            transition: opacity 0.3s ease, visibility 1s ease;
+        }
+
+        .sub-page.visible {
+            display: block;
+            opacity: 1;
+            visibility: visible;
+        }
+
+
+
+        .sub-page .close-button {
+            font-family: Silkscreen, sans-serif;
+            font-size: 8vh;
+            position: absolute;
+            right: 2px;
+            top: 1.5vh;
+            margin-right: 1vh;
+            cursor: pointer;
+            background-color: transparent;
+            border: none;
+            color: #434343;
+            border-radius: 1vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 20;
+
+        }
+         .sub-page .close-button:hover {
+           color: #FD673A;
+                
+       }
+
+        .video-player,
+        .project-description,
+        .slideshow,
+        .large-title,
+        .small-title {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        .video-player.visible,
+        .project-description.visible,
+        .slideshow.visible,
+        .large-title.visible,
+        .small-title.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .video-player {
+            width: 100%;
+            height: 0;
+            overflow: hidden;
+            max-height: 50vh;
+            object-fit: cover;
+            position: relative;
+            padding-bottom: 56.25%;
+            margin-bottom: 20px;
+            transition: transform 0.7s ease;
+        }
+
+        .video-player {
+            width: 100%;
+            height: 0;
+            overflow: hidden;
+            max-height: 50vh;
+            object-fit: cover;
+            border-radius: 3vh 0.5vh 3vh 0.5vh;
+            border: 0.2vh solid #434343;
+            box-shadow: 0.3vh 0.8vh 0.8vh 0.3vh gray;
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            margin-bottom: 20px;
+            
+        }
+
+        .video-player iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 3vh 0.5vh 3vh 0.5vh;
+            border: none;
+            
+       }
+
+        .video-player:hover {
+            transform: scale(0.9);
+
+        }
+
+          .image-player {
+             width: 100%;
+             height: auto; 
+             display: flex;
+             justify-content: center;
+             align-items: center;
+             transition: transform 0.3s ease;
+
+         }
+
+
+        .image-player img {
+            border-radius: 3vh 0.5vh 3vh 0.5vh;
+            border: 0.2vh solid #434343;    
+            max-width: 100%; 
+            max-height: 100%;
+            object-fit: contain;
+            margin-top: -35vh;
+            box-shadow: 0.3vh 0.8vh 0.8vh 0.3vh gray;
+            transition: transform 0.3s ease;
+}
+
+
+        .image-player img:hover {
+            transform: scale(0.9);
+
+}
+        .large-title {    
+           font-family: Space Grotesk;       
+           font-weight: medium;
+           letter-spacing: -0.vw;
+           background-color: #edece8;
+           border-radius: 6vh;
+           border: 0.2vh solid #434343;;
+           padding: 1vh;
+           font-size: 4vw;
+           color: #434343;;
+           text-align: center;
+           margin-bottom: 2.5vh;
+           display: inline-block;
+
+        }
+
+        .small-title {           
+            font-size: 5vw;
+            color: #666;
+            text-align: justify;
+        }
+
+        .project-description {
+            font-family: Space Grotesk, sans-serif;
+            font-size: 3vw; 
+            letter-spacing: -0.1vw;
+            line-height: 1.2;
+            padding-top: 1vh;
+            text-align: left;
+            color: #434343;
+        }
+
+        .slideshow {
+            display: flex;
+            justify-content: space-between;
+            gap: 1vh;
+            padding: 0.5vh;
+            position: relative;
+            z-index: 10;
+        }
+
+        .slideshow img {
+            width: 32%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 1vh;  
+            border: 0.2vh solid #434343;         
+            transition: transform 0.3s ease, z-index 0.3s ease;
+            margin-top: 2vh;
+            z-index: 1;
+        }
+
+      .slideshow img:hover {
+            transform: scale(2);
+            position: center;
+            top: 50%;
+            left: 50%;
+            box-shadow: -0.1vh 0.5vh 1vh 0.3vh #434343;
+            transform: translate(-50%, 10%) scale(1.8) rotate(-8deg);
+            z-index: 15;
+
+        }
+
+        .slideshow img:nth-of-type(1):hover {
+            transform: translateX(50%) translateY(-10%) scale(1.5) rotate(-5deg);
+        }
+
+        .slideshow img:nth-of-type(2):hover {
+            transform: translateY(-10%) scale(1.5) rotate(0deg);
+        }
+
+        .slideshow img:nth-of-type(3):hover {
+            transform: translateX(-50%) translateY(-10%) scale(1.5) rotate(5deg);
+        }
+
+        .extra-segment {
+            font-family: Space Grotesk;
+            font-size: 3vw;
+            color: #434343;     
+            text-align: justify;
+            letter-spacing: -0.1vw;
+            line-height: 1.2;
+            opacity: 0;
+            transform: translateY(60px);
+            transition: opacity 1s ease, transform 1s ease;
+            margin-top: 2vh;
+            z-index: 5;
+            
+        }
+
+        .extra-segment.visible {
+            opacity: 1;
+            transform: translateY(0);
+
+        }
+
+        .navigation-buttons {   
+            display: flex;
+            justify-content: center;
+            position: absolute;
+            bottom: 1vh;
+            gap: 5vh;
+            left: 0;
+            right: 0;
+            padding: 0 1vh;
+}
+
+        .navigation-buttons button {
+           font-family: Silkscreen, sans-serif;
+           font-size: 7vh;          
+           color: #434343;
+           background-color: transparent;
+           border: none;
+           padding: 0vh 2vh;
+           border-radius: 50%;
+           cursor: pointer;
+           transition: background-color 0.3s ease;
+}
+
+        .navigation-buttons button:hover {
+           color: #FD673A;
+
+}
+
+
+        @media only screen and (max-width: 768px) {
+
+
+             .sub-page {
+                height: 99.5vh;
+
+             }
+
+
+            .grid-container {
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-rows: repeat(4, 1fr);
+                width: 100vw;
+                height: 100vh;
+                margin-top: 0vh;
+
+            }
+
+           .slideshow img:nth-of-type(2):hover {
+               transform: translateY(-70%) scale(2.5) rotate(0deg);
+
+
+          }
+
+          .extra-segment {
+            font-size: 2vw;
+
+          }
+
+           .project-description {           
+            font-size: 4.5vw;
+
+           }
+
+            .small-text {
+                font-size: 1.5vw;
+
+            }
+
+            .large-number {
+                font-size: 16vw;
+
+            }
+
+        .sub-page .close-button {
+            position: absolute;
+            top: 2vh;
+            margin-right: 2vh;
+
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="grid-container">
+        <!-- Grid Items (Projects 1 - 12) -->
+ <!-- Project cells -->
+        <div class="grid-item" data-project="1" onclick="showSubPage(1)">         
+            <img src="https://s11.gifyu.com/images/S10d3.gif" alt="Image">    
+            <div class="small-text">① ANIMATION AND MOTION REEL 2023 </div>
+            <div class="large-number">RE<span style="font-family:Rampart One">²³</span> EL</div>
+            <div class="small-text"> A COMPACT OVERVIEW OF PREVIOUS PERSONAL AND COMMISIONED WORK.</div>
+        </div>
+        <div class="grid-item" data-project="2" onclick="showSubPage(2)">
+            <img src="https://s1.gifyu.com/images/S10d9.gif" alt="Image">
+            <div class="small-text">② GAME ON! - A SOLO PROJECT ABOUT SKATEBOARDING</div>
+            <div class="large-number">GAME ON!</div>
+            <div class="small-text">TYPE: PERSONAL / MEDIUM: 3D ANIMATION . MOTION GRAPHICS</div>
+        </div>
+        <div class="grid-item random-3" data-project="3" onclick="showSubPage(3)">
+            <img src="https://s11.gifyu.com/images/S1VPw.jpg" alt="Image">
+            <div class="small-text">③ GUNDAM SAZABI - A PERSONAL PROJECT AIMED AT GAINING BETTER UNDERSTANDING OF MECHANICAL DESIGN AESTHETICS.</div>
+            <div class="large-number"><span style="font-family:Rampart One">メ カ</span></div>
+            <div class="small-text">3D CGI</div>
+        </div>
+        <div class="grid-item random-1" data-project="4" onclick="showSubPage(4)">
+            <img src="https://s11.gifyu.com/images/SoPRa.png" alt="Image">
+            <div class="small-text">④ ADAMIST - THREE DISTINCT MOTION DESIGN CONCEPTS CREATED TO INCREASE SOCIAL MEDIA AWARENESS.</div>
+            <div class="large-number">">ADAMIST</div>
+            <div class="small-text">TYPE: COMMISSIONED / MEDIUM: MOTION FILM</div>
+        </div>
+        <div class="grid-item random-4" data-project="5" onclick="showSubPage(5)">
+            <img src="https://s11.gifyu.com/images/SoPu0.png" alt="Image">
+            <div class="small-text">⑤ PMI - INFORMATIONAL ANIMATED VIDEO OF SUPPLY CHAIN MANAGEMENT SYSTEM______ TYPE: COMMISSIONED / MEDIUM: MOTION GRAPHICS DESIGN</div>
+            <div class="large-number">PMI</div>
+            <div class="small-text">-</div>
+        </div>
+        <div class="grid-item random-1" data-project="6" onclick="showSubPage(6)">
+            <img src="https://s11.gifyu.com/images/S1XTP.jpg" alt="Image">
+            <div class="small-text">⑥ GARUDA INDONESIA - A SERIES OF CORPORATE VISUALS AND PROMOTIONAL MATERIALS HIGHLIGHTING THE KEY FEATURES AND SERVICES. As music production began shifting towards digital workstations, the console inspired a series of unique software developments..</div>
+            <div class="large-number">GARUDA INDONESIA</div>
+            <div class="small-text">.</div>
+        </div>
+        <div class="grid-item random-3" data-project="7" onclick="showSubPage(7)">
+            <img src="https://s11.gifyu.com/images/SoPuC.png" alt="Image">
+            <div class="small-text">-</div>
+            <div class="large-number"><span style="font-family:Rampart One">辰 巳</span> </div>
+            <div class="small-text">⑦ TATSUMI - FEATURE FILM As music production began shifting towards digital workstations, the console inspired a series of unique software developments starting with the Oxford EQ and Dynamics plug-ins.</div>
+        </div>
+        <div class="grid-item  random-1" data-project="8" onclick="showSubPage(8)">
+            <img src="https://s11.gifyu.com/images/SoPRr.png" alt="Image">
+            <div class="small-text">⑧ GEOTERIC - MOTION GRAPHICS AND DATA VISUALIZATION TO DEMONSTRATE THE CAPABILITIES OF GEOTERIC AI’S TECHNOLOGY</div>
+            <div class="large-number">GEOTERIC SEISMICᴬᴵ</div>
+            <div class="small-text">TYPE: COMMISSIONED / MEDIUM: MOTION GRAPHICS</div>
+        </div>
+        <div class="grid-item random-5" data-project="9" onclick="showSubPage(9)">
+            <img src="https://s1.gifyu.com/images/SAK5H.jpg" alt="Image">
+            <div class="small-text">⑨ LUMI - A 3D MOTION GRAPHICS OPENER/ LOWER THIRD SEQUENCE HIGHLIGHTING THE OVERALL HIGH-PERFORMANCE COMPUTING FEATURES.</div>
+            <div class="large-number">LU MI</div>
+            <div class="small-text">MOTION GRAPHICS</div>
+        </div>
+        <div class="grid-item random-1" data-project="10" onclick="showSubPage(10)">
+            <img src="https://s11.gifyu.com/images/S1YzV.jpg" alt="Image">
+            <div class="small-text">⑩ FRAUNHOFER - DESIGN AND MOTION WORK HIGHLIGHTING THE ADVANCEMENTS IN MPEG-H AUDIO AND AAC TECHNOLOGY. As music production began shifting towards digital workstations, the console inspired a series of unique software developments starting with the Oxford EQ and Dynamics plug-ins.
+
+The expanding family of Oxford Plug-Ins quickly acquired a reputation for excellence among leading engineers worldwide; a reputation that was earned through a no-compromise attitude to audio performance and a desire to push the boundaries with intuitive and novel user interfaces.
+
+Sonnox continues to develop unique, high-quality plug-ins for audio production, embracing new technology and formats with partners such as Avid, Universal Audio and Fraunhofer.</div>
+            <div class="large-number">FRAUN HOFER</div>
+            <div class="small-text">TYPE: COMMISSIONED / MEDIUM: MOTION GRAPHICS </div>
+        </div>
+        <div class="grid-item random-1" data-project="11" onclick="showSubPage(11)">
+            <img src="https://s1.gifyu.com/images/S1eUg.png" alt="Image">
+            <div class="small-text">⑪ VEEVA - ANIMATION AND MOTION GRAPHICS TO ILLUSTRATE THE PLATFORM’S USABILITY WORLDWIDE</div>
+            <div class="large-number">VEEVA</div>
+            <div class="small-text">TYPE: COMMISSIONED / MEDIUM: 2D ANIMATION . MOTION GRAPHICS</div>
+        </div>
+        <div class="grid-item random-1" data-project="12" onclick="showSubPage(12)">
+            <img src="https://s1.gifyu.com/images/S1P0L.jpg" alt="Image">
+            <div class="small-text">⑫ A 3D  PRODUCT ANIMATION TO HIGHLIGHT THE KEY FEATURES OF HOME APPLIANCE TECHNOLOGY</div>
+            <div class="large-number">POLY TRON</div>
+            <div class="small-text">TYPE: COMMISSIONED / MEDIUM: 3D PRODUCT ANIMATION</div>
+        </div>
+<div class="small-text"><foot>
+
+— IN MY EARLY FREELANCING DAYS, I WAS VISUALLY DRAWN TO TECH-RELATED PROJECTS — WORKING WITH CLIENTS IN FIELDS LIKE BIG DATA MINING, TELECOMMUNICATIONS, AND EVEN PROMOTING SAFE WI-FI USAGE, AND INTERESTINGLY, I FOUND THAT MY LACK OF DEEP TECHNICAL KNOWLEDGE ABOUT THE NICHE BECAME AN ADVANTAGE. IT ALLOWED ME TO APPROACH STORYTELLING FROM A REGULAR USER’S PERSPECTIVE, MAKING COMPLEX IDEAS MORE ACCESSIBLE - WHILE MAINTAINING CLARITY. 
+
+— FOR EXAMPLE, INSTEAD OF USING DENSE TECHNICAL DIAGRAMS, WE CREATED A MINIMAL VISUAL METAPHOR FOR A BIG-DATA MINING APPS BY COMPARING THE DATA FLOW TO A HIGHWAY SYSTEM, WHERE EACH LANE REPRESENTED A DIFFERENT DATA STREAM, SORTING AND DISTRIBUTION. MAKING IT EASIER FOR BOTH TECHNICAL AND NON-TECHNICAL AUDIENCES TO UNDERSTAND.
+
+— AS I CONTINUE TO REFINE THIS METHOD, I’M EXCITED ABOUT THE OPPORTUNITY TO ADAPT AND EVOLVE WITH EACH NEW PROJECT, CREATING CONTENT THAT RESONATES AND DEEPENS THE UNDERSTANDING ABOUT THE PRODUCTS.
+
+
+  </foot>
+
+
+</div>
+    </div>
+
+    <!-- Sub-page -->
+    <div id="sub-page" class="sub-page">
+        <button class="close-button" onclick="closeSubPage()">×</button>
+        <div id="large-title" class="large-title"></div>
+        <div id="video-player" class="video-player"></div>
+        <div id="image-player" class="image-player"></div>
+        <div id="project-description" class="project-description"></div>
+        <div id="slideshow" class="slideshow"></div>
+        <div id="extra-segment" class="extra-segment"></div>
+        <div id="small-title" class="small-title"></div>
+         <div class="navigation-buttons">
+        <button id="prev-btn" onclick="navigateProject(-1)"><</button>
+        <button id="next-btn" onclick="navigateProject(1)">></button>
+    </div>
+    </div>
+
+    <script>
+        const projectData = 
+
+{
+            1: { title: 'REEL 2023', videoSrc: 'https://www.youtube.com/embed/IqbKLF9cr8E?autoplay=1&loop=1&playlist=IqbKLF9cr8E&mute=1&enablejsapi=1&controls=1&modestbranding=1&rel=0', description: 'A 60ˢᵉᶜ showcase of animation & design projects, accompanied by a legendary ♫tune from the 18ᵗʰ century.— (ᴴᶦᵍʰˡᶦᵍʰᵗ) ↘', extraDescription: 'Thanks for reviewing.', slideshowImages:[
+                    'https://iili.io/dOuw2dQ.md.jpg',
+                    'https://s11.gifyu.com/images/SoPwZ.gif',
+                    'https://iili.io/dOuw37V.md.png'
+                ]
+ },
+
+            2: { title: 'GAME ON', videoSrc: 'https://www.youtube.com/embed/jmCA4M2dmLY?autoplay=1&loop=1&playlist=jmCA4M2dmLY&mute=1&enablejsapi=1&controls=1&modestbranding=1&rel=0', description: 'This solo project drew its inspiration from an awesome flip trick showcased during the world skateboarding day celebration.— (ᵈᵉᵛ ᶠʳᵃᵐᵉˢ) ↘', extraDescription: 'Thanks for reviewing.', slideshowImages:[
+                    'https://s11.gifyu.com/images/S1rSf.jpg',
+                    'https://s1.gifyu.com/images/S1rSv.gif',
+                    'https://s1.gifyu.com/images/S1OQ9.png'
+                ]
+ },
+
+
+            3: { 
+title: 'GUNDAM SAZABI', 
+
+videoSrc: 'https://player.vimeo.com/video/379568325?allow="autoplay; fullscreen', 
+
+description: 'A personal solo project focused at advancing technical skills of full CGI scene development. Referencing the classic Gundam Sazabi Mech (ᵈᵉᵛ ᶠʳᵃᵐᵉˢ) ↘', 
+
+extraDescription: 'CREDITS____Original Gundam mech concept by HAJIME KATOKI — (Sunrise Studio Japan) / Audio by YOSI HORIKAWA', slideshowImages: [
+
+                    'https://s1.gifyu.com/images/S1Zxw.jpg', 
+                    'https://s11.gifyu.com/images/S1VXg.gif',
+                    'https://s11.gifyu.com/images/S1VXr.gif'
+                ]
+ },
+
+
+            4: { title: 'ADAMIST®', imageSrc: 'https://s11.gifyu.com/images/S1d35.gif', description: 'Three distinct motion design concepts created and published to increase social media awareness for an emerging local fashion brand._(ᴴᶦᵍʰˡᶦᵍʰᵗ) ↘', extraDescription: 'The brief was to infused the basic logo shape design with metallic textures and crystals to impart a luxurious feel. The golden love was aimed to answer the emerging demand from the women’s market, adding warmth and elegance while remaining true to the brand’s identity. Deployed across online platforms, social media, and store displays. Visit @adamistmen', 
+slideshowImages: [
+                    'https://s11.gifyu.com/images/S1PO3.jpg',
+                    'https://s11.gifyu.com/images/S1YML.gif',
+                    'https://s1.gifyu.com/images/S1PO9.png'
+                ]
+ },
+
+            5: { title: 'PHILIP MORRIS INDONESIA', imageSrc: 'https://s11.gifyu.com/images/S1YzG.png', description: 'An informational animated video and design work explaining the supply chain management at Philip Morris Indonesia, including the procurement and storage facilities.', extraDescription: 'www.pmi.com', slideshowImages: 	
+	['https://s1.gifyu.com/images/S1YzJ.png', 	
+ 	'https://s11.gifyu.com/images/SoPu0.png', 
+ 	'https://s11.gifyu.com/images/S1YzX.png'
+	 ] 
+
+},
+
+            6: { title: 'GARUDA INDONESIA', imageSrc: 'https://s11.gifyu.com/images/S1XTJ.jpg', description: 'A series of corporate visuals and promotional materials highlighting the key features of the unit and flight services.', extraDescription: 'I was responsible for re-editing the main Boeing 777 project, including superimposing keywords and managing voiceover talent. Additionally, I modeled and animated the ATR 72-600 unit for online presentation. Visit www.garuda-indonesia.com', slideshowImages: 	
+	['https://s11.gifyu.com/images/S1Xw2.png', 	
+ 	'https://s11.gifyu.com/images/S1XTP.jpg', 
+ 	'https://s1.gifyu.com/images/S1XTe.png'
+	 ] 
+
+},
+
+
+            7: { title: '辰 巳 TATSUMI', imageSrc: 'https://s11.gifyu.com/images/S1YMM.gif', description: 'A feature film about Yoshihiro Tatsumi (1935-2015), the godfather of GEKIGA. Screened at the Cannes Film Festival and 6 other international film festivals',  extraDescription: 'I worked as an animator with over 25 talented fellow artist, experiencing firsthand the transformation of a real-life story into a mind-bending narrative. | Directed by Eric Khoo | IFW studios productions | Zhao Wei Films | Visit www.festival-cannes.com/en/f/tatsumi/ | Full movie https://mubi.com/en/us/films/tatsumi',
+slideshowImages: 
+['https://s1.gifyu.com/images/S1rEE.jpg', 
+'https://s1.gifyu.com/images/S1rvr.jpg',
+'https://s1.gifyu.com/images/S1rvt.jpg'] 
+
+},
+
+
+            8: { title: 'GEOTERIC', imageSrc: 'https://s11.gifyu.com/images/SoPRr.png', description: 'Motion graphics work showcasing the advanced AI technology in seismic exploration._(ᴴᶦᵍʰˡᶦᵍʰᵗ ᶠʳᵃᵐᵉˢ) ↘', extraDescription: 'Geoteric provides AI-powered seismic interpretation solutions for the oil and gas industry, focusing on enhancing subsurface understanding. These cloud-enabled solutions allow users to efficiently process complex 3D data, reducing project cycles and improving accuracy without requiring deep technical expertise, boost productivity while minimizing operational costs. Visit www.geoteric.com', slideshowImages: 	
+	['https://s1.gifyu.com/images/S1Xh6.png', 	
+ 	'https://s1.gifyu.com/images/S1Xh8.png', 
+ 	'https://s1.gifyu.com/images/S1Xh4.png'
+	 ] 
+
+},
+
+            9: { title: 'LUMI Super Computer', imageSrc: 'https://s1.gifyu.com/images/S1OWR.png', description: '3D opener/ lower third sequence highlighting the diverse capabilities of LUMI super computing features._(ᴴᶦᵍʰˡᶦᵍʰᵗ ᶠʳᵃᵐᵉˢ) ↘', extraDescription: 'A unique metaphor, A 3D Swiss knife symbolic animation to highlights LUMI versatility across industries. For example, one tool represents AI-driven capabilities for healthcare, another for climate research, and yet another for industrial R&D. This metaphor visually conveys LUMI multi-functional power. Visit www.lumi-supercomputer.eu', slideshowImages: 	
+	['https://s1.gifyu.com/images/S1OWR.png', 	
+ 	'https://s1.gifyu.com/images/S1OW8.png', 
+ 	'https://s1.gifyu.com/images/S1OWD.png'
+	 ] 
+
+
+},
+            10: { title: 'FRAUNHOFER', imageSrc: 'https://s11.gifyu.com/images/SoPhy.gif', description: 'Motion graphics to showcase the advancements in mpeg-h and AAC audio codec technology by Fraunhofer Sonnox_(ᴴᶦᵍʰˡᶦᵍʰᵗ ˢᵗᶦˡˡˢ) ↘', extraDescription: 'www.fraunhofer.de', slideshowImages: 
+                   ['https://s11.gifyu.com/images/S1YzV.jpg', 
+                    'https://s1.gifyu.com/images/S1YzU.jpg',
+                    'https://s1.gifyu.com/images/S1YzF.jpg'
+               ] 
+},
+
+            11: { title: 'VEEVA SYSTEM', imageSrc: 'https://s1.gifyu.com/images/S1eUg.png', description: 'A supplementary 3D animation to illustrate the platforms functionality in the life sciences industries worldwide._(ᴴᶦᵍʰˡᶦᵍʰᵗ ᶠʳᵃᵐᵉˢ) ↘', extraDescription: 'The animation was a fun way to show Veeva’s connection to the life sciences scene in Asia. By having the character fly over a well-known asian city landmark. it visually represented their presence and engagement in the region. Visit www.veeva.com', slideshowImages: 	
+	['https://s1.gifyu.com/images/S1eUc.png', 	
+ 	'https://s1.gifyu.com/images/S1eU4.png', 
+ 	'https://s11.gifyu.com/images/S1eUW.png'
+	 ] 
+
+},
+            12: { title: 'POLYTRON', imageSrc: 'https://s11.gifyu.com/images/S1P0H.png', description: 'A product animation showcasing innovative design and key features of the new washer item._(ᴴᶦᵍʰˡᶦᵍʰᵗ ᶠʳᵃᵐᵉˢ) ↘', extraDescription: 'For this product animation project, I started by modeling from the internal components outward. I then moved on animating key features like the Laguna Drum, Turbo Mix, Laguna Wave, and Aroma Boost, which required complex water and fabric dynamic simulations. Despite the tight deadline, I stayed focused by the simpliest workflow to maintain a clean and polished result before handing it over to the finalization department - See it online on www.polytron.co.id', slideshowImages: 	
+	['https://s1.gifyu.com/images/S1P0L.jpg', 	
+ 	'https://s1.gifyu.com/images/S1P0x.png', 
+ 	'https://s1.gifyu.com/images/S1P0p.jpg'
+	 ] 
+
+     },
+       
+            };
+
+
+
+
+
+    function showSubPage(projectId) {
+        currentProjectId = projectId; // Set currentProjectId ke projectId saat ini
+        const data = projectData[projectId];
+        if (!data) return;
+
+ setTimeout(() => {
+
+        // RESET: Kosongkan atau sembunyikan elemen-elemen dari proyek sebelumnya
+        document.getElementById('large-title').innerText = ''; // Reset judul
+        document.getElementById('project-description').innerText = ''; // Reset deskripsi
+        document.getElementById('extra-segment').innerText = ''; // Reset segmen tambahan
+        document.getElementById('small-title').innerText = ''; // Reset judul kecil
+        document.getElementById('video-player').innerHTML = ''; // Reset konten video
+        document.getElementById('image-player').innerHTML = ''; // Reset konten gambar
+        document.getElementById('slideshow').innerHTML = ''; // Reset slideshow
+        document.getElementById('video-player').classList.remove('visible'); // Sembunyikan video
+        document.getElementById('image-player').classList.remove('visible'); // Sembunyikan gambar
+        document.getElementById('slideshow').classList.remove('visible'); // Sembunyikan slideshow
+
+        // Tampilkan elemen judul besar terlebih dahulu dengan delay 0.5 detik
+        document.getElementById('large-title').innerText = data.title;
+
+        setTimeout(() => {
+            document.getElementById('large-title').classList.add('visible');
+        }, 500);
+
+        // Tampilkan elemen yang sesuai dengan proyek saat ini
+        if (data.videoSrc) {
+            // Jika proyek ini memiliki video, buat elemen iframe
+            const iframe = document.createElement('iframe');
+            iframe.src = `${data.videoSrc}?autoplay=1&rel=0&mute=1&enablejsapi=1&controls=1&modestbranding=1`; // Tambahkan autoplay dan js API
+            iframe.allow = 'autoplay';
+            iframe.allowFullscreen = true;
+            iframe.classList.add('video-frame'); // Optional: tambah class untuk kontrol CSS
+
+            document.getElementById('video-player').appendChild(iframe);
+            setTimeout(() => {
+                document.getElementById('video-player').classList.add('visible');
+            }, 1000); // Delay 0.5 detik setelah judul
+        } else if (data.imageSrc) {
+            // Jika proyek ini memiliki gambar (misalnya GIF)
+            const img = document.createElement('img');
+            img.src = data.imageSrc;
+            img.alt = 'Project Image';
+            img.style.width = '100%';
+            img.style.height = '100%';
+            img.style.objectFit = 'cover'; // Pastikan gambar mengisi kontainer
+
+            document.getElementById('image-player').appendChild(img); 
+            setTimeout(() => {
+                document.getElementById('image-player').classList.add('visible');
+            }, 1000); // Delay 0.5 detik setelah judul
+        }
+
+        // Tampilkan deskripsi proyek dengan delay 1.5 detik
+        if (data.description) {
+            setTimeout(() => {
+                document.getElementById('project-description').innerText = data.description;
+                document.getElementById('project-description').classList.add('visible');
+            }, 1500); // Delay 0.5 detik setelah video/image
+        }
+
+        // Tampilkan slideshow jika ada dengan delay 2 detik
+        if (data.slideshowImages) {
+            const slideshow = document.getElementById('slideshow');
+            slideshow.innerHTML = data.slideshowImages.map(src => `<img src="${src}" alt="Slide">`).join('');
+            setTimeout(() => {
+                slideshow.classList.add('visible');
+            }, 2000); // Delay 0.5 detik setelah deskripsi
+        }
+
+        // Jika ada segmen tambahan (extraDescription), tampilkan dengan delay 2.5 detik
+        if (data.extraDescription) {
+            setTimeout(() => {
+                document.getElementById('extra-segment').innerText = data.extraDescription;
+                document.getElementById('extra-segment').classList.add('visible');
+            }, 2500); // Delay 0.5 detik setelah slideshow
+        }
+
+        // Jika ada smallText, tampilkan dengan delay 3 detik
+        if (data.smallText) {
+            setTimeout(() => {
+                document.getElementById('small-title').innerText = data.smallText;
+                document.getElementById('small-title').classList.add('visible');
+            }, 3000); // Delay 0.5 detik setelah segmen tambahan
+        }
+
+        // Tampilkan sub-page
+        document.getElementById('sub-page').classList.add('visible');
+    }, 1500);
+
+    }
+
+    function closeSubPage() {
+        // Hapus konten video/gambar saat sub-page ditutup dan reset src untuk menghentikan video
+        const videoPlayer = document.getElementById('video-player');
+        const iframe = videoPlayer.querySelector('iframe');
+
+        // Jika ada iframe (video YouTube), reset src untuk menghentikan video
+        if (iframe) {
+            iframe.src = ''; // Reset src untuk menghentikan video
+        }
+
+        // Kosongkan konten video-player
+        videoPlayer.innerHTML = '';
+
+        // Hilangkan semua elemen visible
+        document.querySelectorAll('.large-title, .video-player, .project-description, .slideshow, .extra-segment, .small-title').forEach(element => {
+            element.classList.remove('visible');
+        });
+
+        // Sembunyikan sub-page
+        document.getElementById('sub-page').classList.remove('visible');
+    }
+
+    function navigateProject(direction) {
+        // Hitung proyek berikutnya atau sebelumnya berdasarkan direction
+        currentProjectId += direction;
+
+  // Jika proyek berikutnya adalah 5, lompat ke proyek 6 atau sebelumnya ke proyek 4
+    if (currentProjectId === 5 ) {
+        currentProjectId += direction; // Lewati cell 5
+    }
+
+// Jika proyek berikutnya adalah 11, lompat ke proyek 12 atau sebelumnya ke proyek 10
+    if (currentProjectId === 11 ) {
+        currentProjectId += direction; // Lewati cell 11
+    }
+
+        // Batasi agar tidak keluar dari range 1-12
+        if (currentProjectId < 1) {
+            currentProjectId = 12; // Kembali ke proyek terakhir jika sebelumnya
+        } else if (currentProjectId > 12) {
+            currentProjectId = 1; // Kembali ke proyek pertama jika berikutnya
+        }
+
+        // Panggil ulang showSubPage dengan projectId baru
+        showSubPage(currentProjectId);
+    }
+
+
+    // Mapping untuk cell dan teks yang diinginkan
+    const textMapping = {
+        2: { default: 'ON!', full: 'GAME ON!' },
+        4: { default: 'Λ', full: 'ADAMIST®' },
+        6: { default: 'GARUDA', full: 'GARUDA INDONESIA' },
+        8: { default: 'GEO', full: 'GEOTERIC' },
+        9: { default: 'LU MI -', full: 'LU MI' },
+        10: { default: 'SONNOX', full: 'FRAUNHOFER' },
+      11: { default: 'ⓥ', full: 'VEEVA' },
+      12: { default: 'PO LY', full: 'POLY TRON' }
+    };
+
+    // Loop untuk mengatur hover pada setiap cell yang ditargetkan
+    Object.keys(textMapping).forEach(cellNumber => {
+        const cell = document.querySelector(`.grid-item:nth-child(${cellNumber}) .large-number`);
+        const { default: defaultText, full: fullText } = textMapping[cellNumber];
+
+        // Atur teks default
+        cell.textContent = defaultText;
+
+        // Event listener untuk mengganti teks saat dihover
+        cell.parentElement.addEventListener('mouseenter', () => {
+            cell.textContent = fullText; // Ganti teks menjadi teks penuh saat hover
+        });
+
+        cell.parentElement.addEventListener('mouseleave', () => {
+            cell.textContent = defaultText; // Kembali ke teks default saat hover berhenti
+        });
+    });
+
+// Simpan status proyek yang dilihat ke dalam LocalStorage
+function markProjectAsViewed(projectId) {
+    const gridItem = document.querySelector(`.grid-item[data-project="${projectId}"]`);
+    gridItem.classList.add('viewed');
+    
+    // Simpan status ke localStorage agar tetap ada saat reload
+    localStorage.setItem(`projectViewed_${projectId}`, 'true');
+}
+
+// Cek proyek yang sudah dilihat saat halaman di-load
+function checkViewedProjects() {
+    document.querySelectorAll('.grid-item').forEach(gridItem => {
+        const projectId = gridItem.getAttribute('data-project');
+        if (localStorage.getItem(`projectViewed_${projectId}`) === 'true') {
+            gridItem.classList.add('viewed');
+            disableHoverEffect(gridItem);
+        }
+    });
+}
+
+// Matikan efek hover dengan menambahkan kelas
+function disableHoverEffect(gridItem) {
+    gridItem.classList.add('no-hover');
+}
+
+// Aktifkan ulang fungsi hover setelah cell diklik
+function resetProjectView(projectId) {
+    const gridItem = document.querySelector(`.grid-item[data-project="${projectId}"]`);
+    if (gridItem.classList.contains('viewed')) {
+        gridItem.classList.remove('viewed', 'no-hover');
+        localStorage.removeItem(`projectViewed_${projectId}`);
+    }
+}
+
+// Event saat sub-page ditutup
+function closeSubPage() {
+    const videoPlayer = document.getElementById('video-player');
+    const iframe = videoPlayer.querySelector('iframe');
+    if (iframe) {
+        iframe.src = ''; 
+    }
+    videoPlayer.innerHTML = '';
+    
+    const projectId = currentProjectId; // Ambil projectId saat ini
+    markProjectAsViewed(projectId); // Tandai proyek sebagai sudah dilihat
+    
+    document.querySelectorAll('.large-title, .video-player, .project-description, .slideshow, .extra-segment, .small-title').forEach(element => {
+        element.classList.remove('visible');
+    });
+
+    document.getElementById('sub-page').classList.remove('visible');
+}
+
+// Panggil fungsi untuk cek proyek yang sudah dilihat saat halaman dimuat
+window.onload = checkViewedProjects;
+
+// Event listener untuk mengklik cell yang sudah dilihat agar menghapus status "viewed"
+document.querySelectorAll('.grid-item').forEach(gridItem => {
+    gridItem.addEventListener('click', function() {
+        const projectId = this.getAttribute('data-project');
+        if (this.classList.contains('viewed')) {
+            resetProjectView(projectId);
+        }
+    });
+});
+
+
+
+</script>
+</body>
+</html>
