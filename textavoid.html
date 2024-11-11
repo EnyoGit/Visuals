@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Text Avoidance</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+  <style>
+    /* CSS ↓ */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Roboto Mono', monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f9f9f9;
+  overflow: hidden;
+}
+
+.container {
+  position: relative;
+  width: 90%;
+  max-width: 800px;
+}
+
+.text-wrapper {
+  position: relative;
+  font-size: 1.7vw;
+  line-height: 1.6;
+  text-align: justify;
+  padding: 20px;
+  margin-top: 40px;
+}
+
+.main-text span {
+  display: inline-block;
+  transition: transform 0.2s ease-out;
+}
+
+.draggable-letter {
+  display: flex;
+  top: 0;
+  left: 10;
+  padding: 2vw;
+  position: absolute;
+  font-size: 12vw;
+  color: #333;
+  font-weight: bold;
+  cursor: grab;
+  z-index: 10;
+  user-select: none;
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div id="textWrapper" class="text-wrapper">
+      <p id="mainText" class="main-text">
+        <span>Animation</span> <span>Generalists</span> <span>are</span> <span>versatile</span> <span>artists</span> <span>skilled</span> <span>across</span> <span>various</span> <span>aspects</span> <span>of</span> <span>animation,</span> <span>bringing</span> <span>both</span> <span>creative</span> <span>and</span> <span>technical</span> <span>expertise</span> <span>to</span> <span>projects.</span> <span>From</span> <span>storyboarding</span> <span>and</span> <span>character</span> <span>design</span> <span>to</span> <span>rigging</span> <span>and</span> <span>rendering,</span> <span>their</span> <span>work</span> <span>blends</span> <span>traditional</span> <span>artistry</span> <span>with</span> <span>modern</span> <span>technology</span> <span>to</span> <span>create</span> <span>compelling</span> <span>visual</span> <span>experiences.</span>
+
+<span>Originally</span> <span>emerging</span> <span>to</span> <span>meet</span> <span>the</span> <span>growing</span> <span>demand</span> <span>for</span> <span>multifaceted</span> <span>animators,</span> <span>generalists</span> <span>now</span> <span>play</span> <span>a</span> <span>crucial</span> <span>role</span> <span>in</span> <span>both</span> <span>large</span> <span>studios</span> <span>and</span> <span>smaller</span> <span>production</span> <span>teams.</span> <span>By</span> <span>mastering</span> <span>multiple</span> <span>disciplines,</span> <span>they</span> <span>streamline</span> <span>production</span> <span>and</span> <span>bring</span> <span>a</span> <span>unique,</span> <span>cohesive</span> <span>vision</span> <span>to</span> <span>complex</span> <span>projects.</span>
+
+<span>The</span> <span>objective</span> <span>of</span> <span>an</span> <span>animation</span> <span>generalist</span> <span>is</span> <span>to</span> <span>deliver</span> <span>high-quality</span> <span>visuals</span> <span>with</span> <span>efficiency</span> <span>and</span> <span>adaptability,</span> <span>enhancing</span> <span>storytelling</span> <span>through</span> <span>a</span> <span>broad</span> <span>set</span> <span>of</span> <span>skills</span> <span>that</span> <span>contribute</span> <span>to</span> <span>the</span> <span>entire</span> <span>animation</span> <span>pipeline.</span>
+
+      </p>
+      <div class="draggable-letter" id="draggableO">F</div>
+    </div>
+  </div>
+  <script>
+    const draggableLetter = document.getElementById("draggableO");
+const textSpans = document.querySelectorAll("#mainText span");
+
+let offsetX, offsetY;
+
+draggableLetter.addEventListener("mousedown", (event) => {
+  offsetX = event.clientX - draggableLetter.offsetLeft;
+  offsetY = event.clientY - draggableLetter.offsetTop;
+
+  draggableLetter.style.cursor = "grabbing";
+
+  document.addEventListener("mousemove", onMouseMove);
+  document.addEventListener("mouseup", onMouseUp);
+});
+
+function onMouseMove(event) {
+  const posX = event.clientX - offsetX;
+  const posY = event.clientY - offsetY;
+
+  draggableLetter.style.left = `${posX}px`;
+  draggableLetter.style.top = `${posY}px`;
+
+  textSpans.forEach(span => {
+    const spanRect = span.getBoundingClientRect();
+    const letterRect = draggableLetter.getBoundingClientRect();
+
+    // Calculate distance between the "O" and each word (span)
+    const dx = spanRect.left + spanRect.width / 2 - (letterRect.left + letterRect.width / 2);
+    const dy = spanRect.top + spanRect.height / 2 - (letterRect.top + letterRect.height / 2);
+    const distance = Math.sqrt(dx * dx + dy * dy);
+
+    // Set a threshold distance for repelling effect
+    const threshold = 125; // You can adjust this value
+    if (distance < threshold) {
+      // Calculate repulsion strength
+      const repulsionStrength = (threshold - distance) / threshold;
+
+      // Move the word away from the "O"
+      const moveX = dx * repulsionStrength * 2; // Adjust multiplier for stronger effect
+      const moveY = dy * repulsionStrength * 2;
+
+      span.style.transform = `translate(${moveX}px, ${moveY}px)`;
+    } else {
+      // Reset position if "O" is far enough
+      span.style.transform = "translate(0, 0)";
+    }
+  });
+}
+
+function onMouseUp() {
+  document.removeEventListener("mousemove", onMouseMove);
+  document.removeEventListener("mouseup", onMouseUp);
+  draggableLetter.style.cursor = "grab";
+}
+
+  </script>
+</body>
+</html>
