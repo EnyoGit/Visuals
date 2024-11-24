@@ -3,33 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Interactive Video Player</title>
+  <title>Responsive Interactive Video Player</title>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      overflow: hidden;
     }
 
     body {
       display: flex;
       justify-content: center;
       align-items: center;
-      flex-direction: column;
-      height: 100vh;
+      min-height: 100vh;
       background-color: transparent;
       font-family: 'Space Grotesk', sans-serif;
-      overflow: hidden;
+      padding: 0.2rem;
+    }
+
+    .container-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      width: 100%;
+      max-width: 100%;
+      height: 100%;
+      padding: 0.5rem;
+    }
+
+    .header-text, .footer-text {
+      text-align: left;
+      margin-bottom: 0.5rem;
     }
 
     .header-text {
-      font-size: 2rem;
+      font-size: 4vw; /* Responsif terhadap layar */
       font-weight: 700;
-      margin-bottom: 1rem;
-      text-align: left;
-      width: 100%;
-      max-width: 800px;
       opacity: 0;
       transform: translateY(50px);
       animation: slideFadeIn 1s ease-out forwards;
@@ -39,8 +50,8 @@
     .container {
       position: relative;
       width: 100%;
-      max-width: 800px;
       aspect-ratio: 16 / 9;
+      border-radius: 12pt;
       opacity: 0;
       transform: translateY(50px);
       animation: slideFadeIn 1s ease-out forwards;
@@ -53,6 +64,7 @@
       height: 100%;
       object-fit: cover;
       cursor: pointer;
+      border-radius: 12pt;
     }
 
     .video {
@@ -65,15 +77,12 @@
       width: 100%;
       height: 100%;
       border: none;
+      border-radius: 12pt;
     }
 
     .footer-text {
-      font-size: 1rem;
+      font-size: 2vh; /* Responsif terhadap layar */
       font-weight: 400;
-      margin-top: 1rem;
-      text-align: left;
-      width: 100%;
-      max-width: 800px;
       opacity: 0;
       transform: translateY(50px);
       animation: slideFadeIn 1s ease-out forwards;
@@ -93,19 +102,21 @@
   </style>
 </head>
 <body>
-  <div class="header-text">Hi, I'm Fajrin — animation generalist based in Indonesia. Click the following image to start watching</div>
-  <div class="container">
-    <img class="cover" src="https://s7.gifyu.com/images/SGqJd.png" alt="Video Cover">
-    <div class="video">
-      <iframe 
-        id="videoPlayer"
-        src="" 
-        allow="autoplay; fullscreen" 
-        allowfullscreen>
-      </iframe>
+  <div class="container-wrapper">
+    <div class="header-text">Reel Mixtape — A compact 60sec edit of my personal and pro work. Audio by Vivaldi - La folia ( 1705 ).</div>
+    <div class="container">
+      <img class="cover" src="https://s7.gifyu.com/images/SG7HE.png" alt="Video Cover">
+      <div class="video">
+        <iframe 
+          id="videoPlayer"
+          src="" 
+          allow="autoplay; fullscreen" 
+          allowfullscreen>
+        </iframe>
+      </div>
     </div>
+    <div class="footer-text">I’ve been working remotely with creative agencies and studios across Asia and Europe since the past 10ʸʳˢ, delivering projects for industries® like tech, science, publishing, electronics, consumer goods and beyond.</div>
   </div>
-  <div class="footer-text">Reel Mixtape — A compact 60sec edit of my personal and pro work. Audio by Vivaldi - La folia ( 1705 ). I’ve been working remotely with creative agencies and studios across Asia and Europe since the past 10ʸʳˢ, delivering projects for industries® like tech, science, publishing, electronics, consumer goods and beyond.</div>
 
   <script>
     const cover = document.querySelector('.cover');
@@ -113,43 +124,38 @@
     const iframe = document.getElementById('videoPlayer');
     const container = document.querySelector('.container');
 
-    let player; // Variabel untuk menyimpan instance YouTube Player
+    let player;
 
-    // Fungsi untuk mengembalikan ke kondisi awal
     function resetToCover() {
-      video.style.display = 'none'; // Sembunyikan video
-      cover.style.display = 'block'; // Tampilkan gambar cover
-      iframe.src = ""; // Hapus src untuk menghindari autoplay ulang
+      video.style.display = 'none';
+      cover.style.display = 'block';
+      iframe.src = "";
     }
 
-    // Saat cover diklik
     cover.addEventListener('click', () => {
-      cover.style.display = 'none'; // Hilangkan gambar cover
-      video.style.display = 'block'; // Tampilkan video
-      iframe.src = "https://www.youtube.com/embed/aC21-izRMgM?autoplay=1&mute=0"; // Set src video untuk autoplay
+      cover.style.display = 'none';
+      video.style.display = 'block';
+      iframe.src = "https://www.youtube.com/embed/aC21-izRMgM?autoplay=1&mute=0";
     });
 
-    // Deteksi jika pengguna mengklik di luar area video
     document.addEventListener('click', (event) => {
       if (!container.contains(event.target)) {
-        resetToCover(); // Reset jika klik terjadi di luar area video
+        resetToCover();
       }
     });
 
-    // Fungsi untuk inisialisasi YouTube IFrame API
     function onYouTubeIframeAPIReady() {
       player = new YT.Player('videoPlayer', {
         events: {
           'onStateChange': function (event) {
             if (event.data === YT.PlayerState.ENDED) {
-              resetToCover(); // Reset saat video selesai diputar
+              resetToCover();
             }
           }
         }
       });
     }
 
-    // Tambahkan YouTube IFrame API
     const script = document.createElement('script');
     script.src = "https://www.youtube.com/iframe_api";
     document.body.appendChild(script);
