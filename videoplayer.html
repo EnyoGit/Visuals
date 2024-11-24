@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -65,14 +64,15 @@
     const cover = document.querySelector('.cover');
     const video = document.querySelector('.video');
     const iframe = document.getElementById('videoPlayer');
+    const container = document.querySelector('.container');
 
-    let player; // Variable untuk menyimpan instance YouTube Player
+    let player; // Variabel untuk menyimpan instance YouTube Player
 
-    // Fungsi untuk menampilkan gambar cover kembali
+    // Fungsi untuk mengembalikan ke kondisi awal
     function resetToCover() {
       video.style.display = 'none'; // Sembunyikan video
       cover.style.display = 'block'; // Tampilkan gambar cover
-      iframe.src = ""; // Hapus src untuk mencegah autoplay ulang
+      iframe.src = ""; // Hapus src untuk menghindari autoplay ulang
     }
 
     // Saat cover diklik
@@ -82,13 +82,20 @@
       iframe.src = "https://www.youtube.com/embed/aC21-izRMgM?autoplay=1&mute=0"; // Set src video untuk autoplay
     });
 
+    // Deteksi jika pengguna mengklik di luar area video
+    document.addEventListener('click', (event) => {
+      if (!container.contains(event.target)) {
+        resetToCover(); // Reset jika klik terjadi di luar area video
+      }
+    });
+
     // Fungsi untuk inisialisasi YouTube IFrame API
     function onYouTubeIframeAPIReady() {
       player = new YT.Player('videoPlayer', {
         events: {
           'onStateChange': function (event) {
             if (event.data === YT.PlayerState.ENDED) {
-              resetToCover(); // Tampilkan cover saat video selesai
+              resetToCover(); // Reset saat video selesai diputar
             }
           }
         }
